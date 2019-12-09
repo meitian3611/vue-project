@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="HomePage">
     <h1>主页面</h1>
   </div>
 </template>
@@ -8,4 +8,8 @@
 export default {}
 </script>
 
-<style></style>
+<style lang="scss">
+.HomePage {
+  color: #ff4400;
+}
+</style>
