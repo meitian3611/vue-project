@@ -4,10 +4,9 @@ import Category from '../views/Category.vue'
 import City from '../views/City.vue'
 import Detail from '../views/Detail.vue'
 import Home from '../views/Home.vue'
-import login from '../views/Login.vue'
-Vue.use(VueRouter)
+import Login from '../views/Login.vue'
 
-// const routes = []
+Vue.use(VueRouter)
 
 const router = new VueRouter({
   routes: [
@@ -17,24 +16,31 @@ const router = new VueRouter({
       component: Home
     },
     {
-      path: '/Category',
+      path: '/category',
       name: 'Category',
       component: Category
     },
     {
-      path: '/City',
+      path: '/city',
       name: 'City',
       component: City
     },
     {
-      path: '/Detail',
+      path: '/detail',
       name: 'Detail',
       component: Detail
+      // children: [
+      //   {
+      //     path: 'all',
+      //     name: 'all',
+      //     component: All
+      //   }
+      // ]
     },
     {
       path: '/login',
-      name: 'login',
-      component: login
+      name: 'Login',
+      component: Login
     },
     {
       path: '*',

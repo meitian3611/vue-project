@@ -1,5 +1,8 @@
 <template>
+<div class="a">
   <div>123</div>
+  <router-view></router-view>
+</div>
 </template>
 
 <script>
