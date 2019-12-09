@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>商品详情页面</h1>
+  <div class="sports_page">
+    <h1>体育比赛</h1>
   </div>
 </template>
 
