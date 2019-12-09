@@ -5,7 +5,30 @@
 </template>
 
 <script>
-export default {}
+import axios from 'axios'
+export default {
+  name: 'Home',
+  data () {
+    return {
+      itemList: []
+    }
+  },
+  mounted () {
+    this.getData()
+  },
+  methods: {
+    getData () {
+      axios.get('../../Home.json').then(
+        res => {
+          console.log(res.data)
+        },
+        response => {
+          console.log('error')
+        }
+      )
+    }
+  }
+}
 </script>
 
 <style lang="scss">
