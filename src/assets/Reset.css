@@ -1,0 +1,36 @@
+/*默认样式重置*/
+body, ol, ul, h1, h2, h3, h4, h5, h6, p, th, td, dl, dd, form, fieldset, legend, input, textarea, select,figure {
+    margin: 0;
+    padding: 0
+}
+
+html, body {
+    font: 12px '微软雅黑', Arial;
+    height: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #555;
+}
+
+h1, h2, h3, h4, h5, h6, b, strong {
+    font-weight: normal;
+    font-size: 100%;
+}
+
+em, i {
+    font-style: normal;
+}
+
+img {
+    vertical-align: top;
+}
+
+input {
+    outline: none;
+}
