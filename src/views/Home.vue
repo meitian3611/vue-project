@@ -1,5 +1,6 @@
 <template>
   <div class="HomePage">
+    <!-- 头部三路由 -->
     <div class="home-top">
       <router-link
         class="left"
@@ -22,6 +23,7 @@
         to="/center"
       ><i class="iconfont iconwode"></i></router-link>
     </div>
+    <!-- 轮播图 -->
     <div class="home-banner">
       <van-swipe
         :autoplay="3000"
@@ -35,6 +37,7 @@
         </van-swipe-item>
       </van-swipe>
     </div>
+    <!-- 宫格组件 -->
     <div class="home-tab">
       <van-grid :column-num="4">
         <van-grid-item
@@ -48,6 +51,7 @@
     <div class="home-pic">
       <span class="golbal-ad"></span>
     </div>
+    <!-- 滑动轮播 -->
     <div class="home-content">
       <div class="title">
         近期演出 <span class="title_go">演出日历 > </span>
@@ -64,6 +68,8 @@
       <Swiper :SwiperList='Middle'></Swiper>
     </div>
     <h2 class="home-more">更多演出</h2>
+    <!-- 下拉菜单 -->
+    <van-sticky>
     <div class="home-list">
       <van-dropdown-menu active-color="#ff1268">
         <van-dropdown-item
@@ -78,7 +84,12 @@
       <span class="hot">推荐排序</span>
       <span class="disabled">距离最近</span>
     </div>
-    <div class="home-item">
+    </van-sticky>
+    <!-- 列表渲染 -->
+    <router-link
+      class="home-item"
+      to="/category"
+    >
       <van-card
         v-for="card in cards"
         :key="card.id"
@@ -87,14 +98,14 @@
         :title="card.name"
         :thumb="card.verticalPic"
       />
-    </div>
+    </router-link>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import Swiper from '../components/Swiper'
-import { Search, Swipe, SwipeItem, Grid, GridItem, DropdownMenu, DropdownItem, Card } from 'vant'
+import { Search, Swipe, SwipeItem, Grid, GridItem, DropdownMenu, DropdownItem, Card, Sticky } from 'vant'
 import { getBannerList, getMiddle, getList } from '../api/Home/index'
 
 Vue.use(Swipe).use(SwipeItem)
@@ -102,6 +113,7 @@ Vue.use(Search)
 Vue.use(Grid).use(GridItem)
 Vue.use(DropdownMenu).use(DropdownItem)
 Vue.use(Card)
+  .use(Sticky)
 export default {
   name: 'Home',
   components: {
@@ -137,7 +149,8 @@ export default {
       tabs: [],
       cards: [],
       weeks: ['今天', '明天', '周四', '周五', '周六', '周日', '周一'],
-      Middle: []
+      Middle: [],
+      routerList: [''] // 宫格路由页面
     }
   },
   created () {
@@ -270,7 +283,7 @@ body {
       line-height: 50px;
       margin-right: 10px;
     }
-    .van-ellipsis{
+    .van-ellipsis {
       width: 60px;
     }
   }

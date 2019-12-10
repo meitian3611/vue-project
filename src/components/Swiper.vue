@@ -1,22 +1,18 @@
 <template>
   <div
     class="box swiper-container swiper-container-initialized swiper-container-horizontal"
-    id="swiper-container1"
-  >
+    id="swiper-container1">
     <ul
       class="swiper-wrapper x_list"
-      style="transition-duration: 0ms; transform: translate3d(-820px, 0px, 0px);"
-    >
+      style="transition-duration: 0ms; transform: translate3d(-820px, 0px, 0px);">
       <li
         class="swiper-slide blue-slide"
         v-for="(item, index) in SwiperList"
-        :key="index"
-      >
+        :key="index">
         <a href="#">
           <img
             :src="item.verticalPic"
-            alt
-          />
+            alt/>
           <div class="text">
             <p>{{ item.name }}</p>
             <strong>￥ {{ item.priceLow }} 起</strong>
