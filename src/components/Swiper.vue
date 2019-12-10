@@ -57,6 +57,7 @@ export default {
 
 <style lang="scss">
 #swiper-container1 {
+  -webkit-overflow-scrolling: touch;
   margin-top: 30px;
 }
 #swiper-container1 li {

@@ -19,7 +19,7 @@
       </router-link>
       <router-link
         class="right"
-        to="/"
+        to="/center"
       ><i class="iconfont iconwode"></i></router-link>
     </div>
     <div class="home-banner">
@@ -269,6 +269,9 @@ body {
       font-size: 15px;
       line-height: 50px;
       margin-right: 10px;
+    }
+    .van-ellipsis{
+      width: 60px;
     }
   }
   .home-item {
