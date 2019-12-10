@@ -61,39 +61,98 @@
           item
         }}</span>
       </div>
-      <Swiper></Swiper>
+      <Swiper :SwiperList='Middle'></Swiper>
     </div>
-
+    <h2 class="home-more">更多演出</h2>
+    <div class="home-list">
+      <van-dropdown-menu active-color="#ff1268">
+        <van-dropdown-item
+          v-model="value1"
+          :options="option1"
+        />
+        <van-dropdown-item
+          v-model="value2"
+          :options="option2"
+        />
+      </van-dropdown-menu>
+      <span class="hot">推荐排序</span>
+      <span class="disabled">距离最近</span>
+    </div>
+    <div class="home-item">
+      <van-card
+        v-for="card in cards"
+        :key="card.id"
+        :price="card.priceStr"
+        :desc="card.venueCity + ' / ' + card.showTime + ' / ' + card.venueName"
+        :title="card.name"
+        :thumb="card.verticalPic"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import Swiper from '../components/Swiper'
-import { Search, Swipe, SwipeItem, Grid, GridItem } from 'vant'
-import { getBannerList } from '../api/Home/index'
+import { Search, Swipe, SwipeItem, Grid, GridItem, DropdownMenu, DropdownItem, Card } from 'vant'
+import { getBannerList, getMiddle, getList } from '../api/Home/index'
 
 Vue.use(Swipe).use(SwipeItem)
 Vue.use(Search)
 Vue.use(Grid).use(GridItem)
+Vue.use(DropdownMenu).use(DropdownItem)
+Vue.use(Card)
 export default {
   name: 'Home',
+  components: {
+    [Swiper.name]: Swiper
+  },
   data () {
     return {
       bannerList: [],
       value: '',
+      value1: 0,
+      value2: 'a',
+      option1: [
+        { text: '全部分类', value: 0 },
+        { text: '演唱会', value: 1 },
+        { text: '话剧歌剧', value: 2 },
+        { text: '音乐会', value: 3 },
+        { text: '曲宛杂坛', value: 4 },
+        { text: '舞蹈芭蕾', value: 5 },
+        { text: '体育比赛', value: 6 },
+        { text: '儿童亲子', value: 7 },
+        { text: '展览休闲', value: 8 },
+        { text: '二次元', value: 9 },
+        { text: '旅游展览', value: 10 }
+      ],
+      option2: [
+        { text: '全部时间', value: 'a' },
+        { text: '今天', value: 'b' },
+        { text: '明天', value: 'c' },
+        { text: '本周末', value: 'c' },
+        { text: '一周内', value: 'c' },
+        { text: '一月内', value: 'c' }
+      ],
       tabs: [],
-      weeks: ['今天', '明天', '周四', '周五', '周六', '周日', '周一']
+      cards: [],
+      weeks: ['今天', '明天', '周四', '周五', '周六', '周日', '周一'],
+      Middle: []
     }
-  },
-  components: {
-    Swiper
   },
   created () {
     getBannerList().then(response => {
       let res = response.data
       this.bannerList = res.data.focusPicList.map(item => item.pic)
       this.tabs = res.data.navigationList.map(item => item)
+    })
+    getMiddle().then(response => {
+      let res = response.data
+      this.Middle = res.data.nearByCity.map(item => item)
+    })
+    getList().then(response => {
+      let res = response.data
+      this.cards = res.data.projectInfo.map(item => item)
     })
   }
 }
@@ -156,6 +215,7 @@ body {
     }
   }
   .home-content {
+    margin-bottom: 20px;
     .title {
       display: flex;
       justify-content: space-between;
@@ -177,6 +237,60 @@ body {
       font-size: 14px;
       color: #999;
       margin: 0 15px 20px;
+    }
+  }
+  .home-more {
+    font-weight: 700;
+    padding-left: 15px;
+    margin-top: 35px;
+    font-size: 18px;
+    color: #111;
+  }
+  .home-list {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+    background: #fff;
+    z-index: 99;
+    padding: 0 5px;
+    .van-dropdown-menu__item {
+      margin-right: 20px !important;
+    }
+    .hot {
+      @extend .disabled;
+      color: #ff1268;
+    }
+    .disabled {
+      display: block;
+      height: 50px;
+      text-align: center;
+      font-size: 15px;
+      line-height: 50px;
+      margin-right: 10px;
+    }
+  }
+  .home-item {
+    .van-card {
+      background: #fff;
+      .van-card__title {
+        font-size: 18px;
+        font-weight: 700;
+        max-height: 70px;
+        line-height: 25px;
+      }
+      .van-image__img {
+        height: auto;
+      }
+      .van-card__bottom {
+        margin-top: 20px;
+        .van-card__price {
+          font-size: 15px;
+          font-weight: 400;
+          color: #ff1268;
+        }
+      }
     }
   }
 }
