@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>商品详情页面</h1>
+  <div class="ballet_page">
+    <h1>芭蕾舞蹈</h1>
   </div>
 </template>
 

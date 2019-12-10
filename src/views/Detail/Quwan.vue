@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>商品详情页面</h1>
+  <div class="QuWan_page">
+    <h1>曲苑杂坛</h1>
   </div>
 </template>
 

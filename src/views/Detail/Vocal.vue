@@ -1,6 +1,6 @@
 <template>
   <div class="detail_vocal">
-    <h1>歌剧</h1>
+    <h1>话剧歌剧</h1>
   </div>
 </template>
 

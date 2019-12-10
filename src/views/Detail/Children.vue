@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>商品详情页面</h1>
+  <div class="children_page">
+    <h1>儿童亲子</h1>
   </div>
 </template>
 
