@@ -1,11 +1,10 @@
 <template>
   <div>
-      <h1>会员中心详情页</h1>
+      <h1>常见观演者详情页</h1>
   </div>
 </template>
 
 <script>
-
 export default {
 
 }
