@@ -1,11 +1,10 @@
 <template>
   <div>
-      <h1>会员中心详情页</h1>
+      <h1>客服电话详情页</h1>
   </div>
 </template>
 
 <script>
-
 export default {
 
 }

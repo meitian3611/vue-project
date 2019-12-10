@@ -13,9 +13,18 @@ import Quwan from '../views/Detail/Quwan.vue'
 import Ballet from '../views/Detail/Ballet.vue'
 import Sports from '../views/Detail/Sports.vue'
 import Children from '../views/Detail/Children.vue'
+
 import Center from '../views/Center.vue'
 import VipCenter from '../views/Center/VipCenter.vue'
-import Vip from '../views/Center/Vip.vue'
+import MyOrder from '../views/Center/MyOrder.vue'
+import Coupon from '../views/Center/Coupon.vue'
+import MyTicket from '../views/Center/MyTicket.vue'
+import MyConcern from '../views/Center/MyConcern.vue'
+import RecAdress from '../views/Center/RecAdress.vue'
+import ComPerformers from '../views/Center/ComPerformers.vue'
+import RealName from '../views/Center/RealName.vue'
+import Feedback from '../views/Center/Feedback.vue'
+import ServicePhone from '../views/Center/ServicePhone.vue'
 
 Vue.use(VueRouter)
 
@@ -113,9 +122,49 @@ const router = new VueRouter({
       component: VipCenter
     },
     {
-      path: '/vip',
-      name: 'Vip',
-      component: Vip
+      path: '/myorder',
+      name: 'MyOrder',
+      component: MyOrder
+    },
+    {
+      path: '/coupon',
+      name: 'Coupon',
+      component: Coupon
+    },
+    {
+      path: '/myticket',
+      name: 'MyTicket',
+      component: MyTicket
+    },
+    {
+      path: '/myconcern',
+      name: 'MyConcern',
+      component: MyConcern
+    },
+    {
+      path: '/recadress',
+      name: 'RecAdress',
+      component: RecAdress
+    },
+    {
+      path: '/comperformers',
+      name: 'ComPerformers',
+      component: ComPerformers
+    },
+    {
+      path: '/realname',
+      name: 'RealName',
+      component: RealName
+    },
+    {
+      path: '/feedback',
+      name: 'Feedback',
+      component: Feedback
+    },
+    {
+      path: '/servicephone',
+      name: 'ServicePhone',
+      component: ServicePhone
     }
   ]
 })
