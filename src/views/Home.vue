@@ -19,7 +19,7 @@
       </router-link>
       <router-link
         class="right"
-        to="/"
+        to="/center"
       ><i class="iconfont iconwode"></i></router-link>
     </div>
     <div class="home-banner">

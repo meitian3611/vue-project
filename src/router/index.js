@@ -13,6 +13,9 @@ import Quwan from '../views/Detail/Quwan.vue'
 import Ballet from '../views/Detail/Ballet.vue'
 import Sports from '../views/Detail/Sports.vue'
 import Children from '../views/Detail/Children.vue'
+import Center from '../views/Center.vue'
+import VipCenter from '../views/Center/VipCenter.vue'
+import Vip from '../views/Center/Vip.vue'
 
 Vue.use(VueRouter)
 
@@ -84,8 +87,47 @@ const router = new VueRouter({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/center',
+      name: 'Center',
+      component: Center,
+      meta: {
+        needLogin: true
+      }
+
+      // beforeEnter: (to, from, next) => { // 路由独享
+      //   // 判断当前是否有登录状态
+      //   console.log(to)
+      //   if (window.isLogin) {
+      //     next()
+      //   } else {
+      //     // 打回登录页
+      //     next(`/login?redirect=${to.fullPath}`)
+      //   }
+      // }
+    },
+    {
+      path: '/vipcenter',
+      name: 'VipCenter',
+      component: VipCenter
+    },
+    {
+      path: '/vip',
+      name: 'Vip',
+      component: Vip
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  // console.log('全局 前置', to)
+  if (to.meta.needLogin && !window.isLogin) {
+    // 判断当前是否有登录状态
+    next(`/login?redirect=${to.fullPath}`)
+  } else {
+    next()
+  }
 })
 
 export default router

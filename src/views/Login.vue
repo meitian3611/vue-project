@@ -8,7 +8,7 @@
       >
     </div>
     <div id="login-iframe">
-      <form action="">
+
         <div class="fm-mobile">
           <!-- <label for="" class="fm-label">
             <span>
@@ -60,7 +60,10 @@
         </div>
 
         <div class="fm-btn">
-          <button class="fm-button">登录</button>
+          <button
+            class="fm-button"
+            @click="fn1"
+          >登录</button>
         </div>
 
         <div class="longin-link">
@@ -83,7 +86,7 @@
             ></a>
           </div>
         </div>
-      </form>
+
     </div>
   </div>
 </template>
@@ -113,6 +116,17 @@ export default {
       // 可以通过 close-on-click-action 属性开启自动关闭
       this.show = false
       Toast(item.name)
+    },
+
+    fn1 () {
+      // 将 window.isLogin = true
+      window.isLogin = true
+
+      // 获取 url 地址上的 redirect 参数
+      let redirect = this.$route.query.redirect || '/'
+
+      // 跳转回首页
+      this.$router.replace(redirect)
     }
   }
 }
