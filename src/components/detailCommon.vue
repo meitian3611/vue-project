@@ -79,9 +79,6 @@ export default {
       }, 500)
     },
     toHome ($event) {
-      console.log(this.filmsList)
-      let _id = $event.target.parentNode
-      console.log(_id)
       this.$router.replace('/category')
     }
   }
