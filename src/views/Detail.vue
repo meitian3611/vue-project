@@ -1,12 +1,10 @@
 <template>
   <div class="Dateil_page">
-  <van-tabs>
+  <van-tabs @click="curTabIndex">
     <van-tab
     v-for="item in detailList"
     :title="item.name"
     :key="item.id"
-    :to="item.href"
-    v-model="curTabIndex"
     >
       <menus> </menus>
       <router-view></router-view>
@@ -14,7 +12,6 @@
 </van-tabs>
   </div>
 </template>
-
 <script>
 import Vue from 'vue'
 import { Tab, Tabs } from 'vant'
@@ -84,13 +81,16 @@ export default {
           href: '/detail/all'
         }
       ],
-      curTabIndex: this.$route.fullPath
+      replace: true
     }
   },
-  mounted () {
-    // console.log(this.curTabIndex)
-    let paths = this.detailList.find(item => item.href === this.curTabIndex)
-    console.log(paths)
+  methods: {
+    curTabIndex (name, title) {
+      let paths = this.detailList.find(item => item.name === title)
+      this.$router.replace(paths.href)
+      // console.log(name, title, paths)
+      // console.log(666)
+    }
   }
 }
 </script>

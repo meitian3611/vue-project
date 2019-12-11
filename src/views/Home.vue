@@ -1,4 +1,5 @@
 <template>
+  <!-- 梅恬 => 首页 -->
   <div class="HomePage">
     <!-- 头部三路由 -->
     <div class="home-top">
@@ -45,6 +46,7 @@
           :key="index"
           :icon="value.pic"
           :text="value.title"
+          :to="value.schema"
         />
       </van-grid>
     </div>
@@ -65,34 +67,37 @@
           item
         }}</span>
       </div>
-      <Swiper :SwiperList='Middle'></Swiper>
+      <router-link to="/category">
+        <Swiper :SwiperList='Middle'></Swiper>
+      </router-link>
+
     </div>
     <h2 class="home-more">更多演出</h2>
     <!-- 下拉菜单 -->
     <van-sticky>
-    <div class="home-list">
-      <van-dropdown-menu active-color="#ff1268">
-        <van-dropdown-item
-          v-model="value1"
-          :options="option1"
-        />
-        <van-dropdown-item
-          v-model="value2"
-          :options="option2"
-        />
-      </van-dropdown-menu>
-      <span class="hot">推荐排序</span>
-      <span class="disabled">距离最近</span>
-    </div>
+      <div class="home-list">
+        <van-dropdown-menu active-color="#ff1268">
+          <van-dropdown-item
+            v-model="value1"
+            :options="option1"
+          />
+          <van-dropdown-item
+            v-model="value2"
+            :options="option2"
+          />
+        </van-dropdown-menu>
+        <span class="hot">推荐排序</span>
+        <span class="disabled">距离最近</span>
+      </div>
     </van-sticky>
     <!-- 列表渲染 -->
     <router-link
       class="home-item"
-      to="/category"
+      :to="`/category/id=${card.id}`"
+      v-for="card in cards"
+      :key="card.id"
     >
       <van-card
-        v-for="card in cards"
-        :key="card.id"
         :price="card.priceStr"
         :desc="card.venueCity + ' / ' + card.showTime + ' / ' + card.venueName"
         :title="card.name"
@@ -172,142 +177,5 @@ export default {
 </script>
 
 <style lang="scss">
-html,
-body {
-  height: 100%;
-}
-.HomePage {
-  height: 100%;
-  box-sizing: border-box;
-  .home-top {
-    height: 50px;
-    background-color: #f5f5f5;
-    display: flex;
-    align-items: center;
-    .left {
-      font-size: 16px;
-      color: #222;
-      margin: 0 10px;
-      .iconfont {
-        font-size: 22px;
-      }
-    }
-    .center {
-      width: 65%;
-      .van-search {
-        padding: 0;
-        .van-search__content {
-          background: #fff;
-        }
-      }
-    }
-    .right {
-      font-size: 20px;
-      color: #222;
-      .iconfont {
-        font-size: 22px;
-        margin-left: 15px;
-      }
-    }
-  }
-  .home-banner {
-    height: 140px;
-    img {
-      width: 100%;
-    }
-  }
-  .home-pic {
-    .golbal-ad {
-      display: block;
-      width: 100%;
-      height: 120px;
-      background-image: url('//img.alicdn.com/tps/i4/TB1wLq8p7L0gK0jSZFAwu3A9pXa.png_q60.jpg_.webp');
-      background-size: 100% 100%;
-      background-position: top center;
-      background-repeat: no-repeat;
-    }
-  }
-  .home-content {
-    margin-bottom: 20px;
-    .title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 18px;
-      font-weight: 700;
-      margin: 20px 15px 15px;
-      .title_go {
-        font-size: 12px;
-        color: #999;
-        font-weight: 400;
-        display: flex;
-        align-items: center;
-      }
-    }
-    .week {
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
-      color: #999;
-      margin: 0 15px 20px;
-    }
-  }
-  .home-more {
-    font-weight: 700;
-    padding-left: 15px;
-    margin-top: 35px;
-    font-size: 18px;
-    color: #111;
-  }
-  .home-list {
-    position: relative;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    box-sizing: border-box;
-    background: #fff;
-    z-index: 99;
-    padding: 0 5px;
-    .van-dropdown-menu__item {
-      margin-right: 20px !important;
-    }
-    .hot {
-      @extend .disabled;
-      color: #ff1268;
-    }
-    .disabled {
-      display: block;
-      height: 50px;
-      text-align: center;
-      font-size: 15px;
-      line-height: 50px;
-      margin-right: 10px;
-    }
-    .van-ellipsis {
-      width: 60px;
-    }
-  }
-  .home-item {
-    .van-card {
-      background: #fff;
-      .van-card__title {
-        font-size: 18px;
-        font-weight: 700;
-        max-height: 70px;
-        line-height: 25px;
-      }
-      .van-image__img {
-        height: auto;
-      }
-      .van-card__bottom {
-        margin-top: 20px;
-        .van-card__price {
-          font-size: 15px;
-          font-weight: 400;
-          color: #ff1268;
-        }
-      }
-    }
-  }
-}
+@import '../../public/mt-style/Home.scss';
 </style>

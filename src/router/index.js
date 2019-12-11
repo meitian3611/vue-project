@@ -28,6 +28,11 @@ import RealName from '../views/Center/RealName.vue'
 import Feedback from '../views/Center/Feedback.vue'
 import ServicePhone from '../views/Center/ServicePhone.vue'
 
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.replace = function replace (location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -38,7 +43,7 @@ const router = new VueRouter({
       component: Home
     },
     {
-      path: '/category',
+      path: '/category/:id',
       name: 'Category',
       component: Category
     },
@@ -51,7 +56,7 @@ const router = new VueRouter({
       path: '/detail',
       name: 'Detail',
       component: Detail,
-      // redirect: '/detail/all',
+      redirect: '/detail/all',
       children: [
         {
           path: 'all',

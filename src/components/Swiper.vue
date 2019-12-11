@@ -1,23 +1,27 @@
 <template>
   <div
     class="box swiper-container swiper-container-initialized swiper-container-horizontal"
-    id="swiper-container1">
+    id="swiper-container1"
+  >
     <ul
       class="swiper-wrapper x_list"
-      style="transition-duration: 0ms; transform: translate3d(-820px, 0px, 0px);">
+      style="transition-duration: 0ms; transform: translate3d(-820px, 0px, 0px);"
+    >
       <li
         class="swiper-slide blue-slide"
-        v-for="(item, index) in SwiperList"
-        :key="index">
-        <a href="#">
-          <img
-            :src="item.verticalPic"
-            alt/>
+        v-for="item in SwiperList"
+        :key="item.id"
+      >
+        <router-link
+          class="alist"
+          :to="`/category/id=${item.id}`"
+        >
+          <img :src="item.verticalPic" />
           <div class="text">
             <p>{{ item.name }}</p>
             <strong>￥ {{ item.priceLow }} 起</strong>
           </div>
-        </a>
+        </router-link>
       </li>
     </ul>
   </div>
@@ -41,7 +45,7 @@ export default {
     return {}
   },
   mounted () {
-    this.mySwiper = new Swiper('.swiper-container', {
+    this.mySwiper = new Swiper(this.$el, {
       slidesPerView: 3,
       spaceBetween: 160,
       observer: true,
@@ -59,6 +63,12 @@ export default {
 #swiper-container1 li {
   width: 150px !important;
   margin-right: 10px !important;
+  .alist {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #666;
+  }
   img {
     height: 219px;
   }
