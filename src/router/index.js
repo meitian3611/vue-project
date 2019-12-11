@@ -14,6 +14,18 @@ import Ballet from '../views/Detail/Ballet.vue'
 import Sports from '../views/Detail/Sports.vue'
 import Children from '../views/Detail/Children.vue'
 
+import Center from '../views/Center.vue'
+import VipCenter from '../views/Center/VipCenter.vue'
+import MyOrder from '../views/Center/MyOrder.vue'
+import Coupon from '../views/Center/Coupon.vue'
+import MyTicket from '../views/Center/MyTicket.vue'
+import MyConcern from '../views/Center/MyConcern.vue'
+import RecAdress from '../views/Center/RecAdress.vue'
+import ComPerformers from '../views/Center/ComPerformers.vue'
+import RealName from '../views/Center/RealName.vue'
+import Feedback from '../views/Center/Feedback.vue'
+import ServicePhone from '../views/Center/ServicePhone.vue'
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -85,8 +97,87 @@ const router = new VueRouter({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/center',
+      name: 'Center',
+      component: Center,
+      meta: {
+        needLogin: true
+      }
+
+      // beforeEnter: (to, from, next) => { // 路由独享
+      //   // 判断当前是否有登录状态
+      //   console.log(to)
+      //   if (window.isLogin) {
+      //     next()
+      //   } else {
+      //     // 打回登录页
+      //     next(`/login?redirect=${to.fullPath}`)
+      //   }
+      // }
+    },
+    {
+      path: '/vipcenter',
+      name: 'VipCenter',
+      component: VipCenter
+    },
+    {
+      path: '/myorder',
+      name: 'MyOrder',
+      component: MyOrder
+    },
+    {
+      path: '/coupon',
+      name: 'Coupon',
+      component: Coupon
+    },
+    {
+      path: '/myticket',
+      name: 'MyTicket',
+      component: MyTicket
+    },
+    {
+      path: '/myconcern',
+      name: 'MyConcern',
+      component: MyConcern
+    },
+    {
+      path: '/recadress',
+      name: 'RecAdress',
+      component: RecAdress
+    },
+    {
+      path: '/comperformers',
+      name: 'ComPerformers',
+      component: ComPerformers
+    },
+    {
+      path: '/realname',
+      name: 'RealName',
+      component: RealName
+    },
+    {
+      path: '/feedback',
+      name: 'Feedback',
+      component: Feedback
+    },
+    {
+      path: '/servicephone',
+      name: 'ServicePhone',
+      component: ServicePhone
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  // console.log('全局 前置', to)
+  if (to.meta.needLogin && !window.isLogin) {
+    // 判断当前是否有登录状态
+    next(`/login?redirect=${to.fullPath}`)
+  } else {
+    next()
+  }
 })
 
 export default router
