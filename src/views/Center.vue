@@ -2,7 +2,7 @@
   <div class="myCenter">
     <div class="myPhoto">
       <img class="myPic" src="http://perico.damai.cn/userheadphotos/759450/151890007.jpg" alt="">
-      <span class="myName">麦子Ms.li</span>
+      <span class="myName" v-if="userInfo">{{ userInfo }}</span>
     </div>
     <ul class="myList">
       <li>
@@ -45,8 +45,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-
+  name: 'Center',
+  computed: {
+    ...mapState(['userInfo'])
+  }
 }
 </script>
 
