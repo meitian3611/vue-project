@@ -5,9 +5,7 @@
         <div class="con-top">
           <div class="main">
             <div class="pic">
-              <img
-                :src="JinList.verticalPic"
-              />
+              <img :src="JinList.verticalPic" />
             </div>
             <div class="title">
               <div class="title-con">
@@ -212,7 +210,7 @@
 </template>
 
 <script>
-import { getList } from '../api/Home/index'
+import { getList, getMiddle } from '../api/Home/index'
 import Vue from 'vue'
 import {
   GoodsAction,
@@ -241,6 +239,9 @@ export default {
       JinList: []
     }
   },
+  mounted () {
+    console.log(this.$route)
+  },
   created () {
     let id = this.$route.fullPath.split('=')[1]
     getList().then(response => {
@@ -251,6 +252,15 @@ export default {
         }
       })
       // console.log(this.JinList)
+    })
+    let idMiddle = this.$route.fullPath.split('=')[1]
+    getMiddle().then(response => {
+      let res = response.data.data.nearByCity
+      res.forEach(item => {
+        if (Number(idMiddle) === item.id) {
+          this.JinList = item
+        }
+      })
     })
   },
   methods: {
