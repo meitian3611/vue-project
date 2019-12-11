@@ -1,0 +1,328 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+.Commodity {
+  position: relative;
+  display: flex;
+  height: 100%;
+  .van-action-sheet__content {
+    .title {
+      color: #999;
+      span {
+        font-size: 18px;
+        color: #000;
+        font-weight: 600;
+        margin-left: 10px;
+      }
+    }
+    .button {
+      padding-bottom: 200px;
+      .van-button {
+        width: 200px;
+        margin-left: 20px;
+        margin-top: 10px;
+        .van-button__text {
+          color: #333;
+        }
+      }
+    }
+  }
+  .content {
+    width: 100%;
+    flex: 1;
+    overflow: auto;
+    display: block;
+    position: relative;
+    .desc {
+      background: #ccc;
+      // position: absolute;
+      width: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      .con-top {
+        position: relative;
+        overflow: hidden;
+        padding-top: 20px;
+        .main {
+          position: relative;
+          .pic {
+            position: absolute;
+            z-index: 10;
+            left: 20px;
+            top: 0;
+            img {
+              width: 100px;
+              height: 140px;
+              border-radius: 10px;
+            }
+          }
+          .title {
+            width: 100%;
+            min-height: 90px;
+            padding-left: 130px;
+            padding-right: 20px;
+            box-sizing: border-box;
+            .title-con {
+              font-size: 18px;
+              color: #fff;
+            }
+          }
+          .price {
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+            padding-left: 130px;
+            padding-right: 20px;
+            padding-top: 8px;
+            background: #fff;
+            border-radius: 20px 20px 0 0;
+            .price-title {
+              display: flex;
+              align-items: center;
+              .rangr {
+                font-size: 15px;
+                font-weight: 500;
+                color: #ff2869;
+              }
+            }
+            .price-list {
+              position: relative;
+              .tag {
+                background-image: linear-gradient(90deg, #ff3299 1%, #ff4a72);
+                display: inline-block;
+                color: #fff;
+                font-size: 12px;
+                border-radius: 20px;
+                padding: 1px 5px;
+                margin-right: 10px;
+                .iconjiantouyou {
+                  position: absolute;
+                  right: 0;
+                  font-size: 12px;
+                  color: #333;
+                }
+              }
+            }
+          }
+        }
+      }
+      .con-normal {
+        padding: 0 20px;
+        background: #fff;
+        .main {
+          padding: 15px 0;
+          border-bottom: 1px solid #eeeeee;
+          display: flex;
+          justify-content: space-between;
+          .left {
+            flex-direction: column;
+            font-size: 12px;
+            overflow: scroll;
+            color: #000;
+            display: flex;
+            justify-content: space-between;
+            .tag-list {
+              display: flex;
+              align-items: center;
+              .tag {
+                display: inline-block;
+                margin-right: 10px;
+                word-spacing: nowrap;
+                color: #999;
+                font-weight: 400;
+                font-size: 12px;
+                .van-tag--warning {
+                  padding: 0 2px;
+                }
+              }
+            }
+            .notice {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              margin-bottom: 5px;
+              font-size: 17px;
+              font-weight: 500;
+            }
+            .sub {
+              color: #9c9ca5;
+              font-size: 12px;
+              font-weight: 400;
+            }
+          }
+          .right {
+            .icondanseshixintubiao- {
+              font-size: 28px;
+              color: blue;
+            }
+          }
+        }
+      }
+      .section {
+        width: 100%;
+        height: 7px;
+        background: #f8f8f8;
+      }
+      .normal-bottom {
+        padding: 0 15px;
+        background: #fff;
+        padding: 10px 0;
+        .main {
+          position: relative;
+          display: flex;
+          padding: 10px 0;
+          .left {
+            margin-left: 20px;
+            font-size: 14px;
+            .van-icon {
+              margin-right: 5px;
+              color: #d5b499;
+            }
+          }
+          .right {
+            .iconfont {
+              position: absolute;
+              right: 20px;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+    .container {
+      .van-ellipsis {
+        font-size: 16px;
+      }
+      .van-tab {
+        color: #7d7e80;
+      }
+    }
+  }
+  .van-btn {
+    .van-popup {
+      .item {
+        background-color: #fff8f1;
+        height: 62px;
+        border: 1px solid #cea072;
+        margin: 15px;
+        border-radius: 10px;
+        display: flex;
+        .left {
+          display: flex;
+          margin-right: 15px;
+          margin-left: 15px;
+          width: 210px;
+          .left-con {
+            display: flex;
+            align-items: center;
+            .price-pre {
+              font-size: 12px;
+              color: #000;
+              align-self: flex-start;
+              margin-top: 20px;
+              margin-right: 2px;
+            }
+            .price {
+              font-size: 28px;
+              line-height: 28px;
+              color: #000;
+              font-weight: 700;
+            }
+            .notice {
+              font-size: 15px;
+              flex: 1;
+              height: 16px;
+              line-height: 16px;
+              margin-bottom: 5px;
+              margin-left: 5px;
+              overflow: hidden;
+              font-weight: 600;
+            }
+          }
+        }
+        .right {
+          position: relative;
+          display: flex;
+          flex: 1;
+          align-items: center;
+          height: 100%;
+          border-left: 1px solid #cea072;
+          justify-content: center;
+          width: 100%;
+          .section-btn {
+            color: #000;
+          }
+          .two {
+            color: #ff4d64;
+            font-size: 14px;
+            font-weight: 600;
+          }
+          .vip-tag {
+            position: absolute;
+            right: 1px;
+            top: 0;
+            height: 12px;
+            background: #000;
+            font-size: 12px;
+            color: #ffd7b0;
+            line-height: 12px;
+            padding: 1px;
+          }
+        }
+      }
+      .item-se {
+        background-color: #fff8f9;
+        border: none;
+        height: 70px;
+        .left {
+          flex-direction: column;
+          .left-top {
+            display: flex;
+            margin-top: 10px;
+            width: 100%;
+            .price {
+              font-size: 18px;
+              line-height: 16px;
+              color: #ff4d64;
+              font-weight: 700;
+              margin-top: 5px;
+            }
+            .yuan {
+              color: #ff4d64;
+              margin-left: 5px;
+              margin-top: 5px;
+            }
+            .notice {
+              font-size: 15px;
+              color: #ff4d64;
+              font-weight: 700;
+              margin-top: 2px;
+              margin-left: 5px;
+            }
+          }
+        }
+
+        .info {
+          color: #999;
+          margin-top: 5px;
+          font-size: 12px;
+          line-height: 12px;
+        }
+      }
+      .txt {
+        font-size: 12px;
+        color: #aaa;
+        letter-spacing: 0;
+        margin: 5px 10px 260px;
+      }
+      .van-action-sheet__header {
+        text-align: left;
+        margin-left: 10px;
+        font-size: 20px;
+      }
+    }
+  }
+}
