@@ -6,13 +6,12 @@
           <div class="main">
             <div class="pic">
               <img
-                src="https://img.alicdn.com/bao/uploaded/https://img.alicdn.com/imgextra/i3/2251059038/O1CN01LfuWjT2GdSDYP6DTm_!!2251059038.jpg"
-                alt=""
+                :src="JinList.verticalPic"
               />
             </div>
             <div class="title">
               <div class="title-con">
-                【深圳】李宗盛作品音乐剧《当爱已成往事》
+                {{ JinList.name }}
               </div>
             </div>
             <div
@@ -20,7 +19,7 @@
               @click="onPrice"
             >
               <div class="price-title">
-                <div class="rangr">￥280-￥1280</div>
+                <div class="rangr">{{ JinList.priceStr }}</div>
               </div>
               <div class="price-list">
                 <div class="tag">
@@ -67,7 +66,7 @@
           >
             <div class="left">
               <div class="notice">
-                2020.01.17-01.19
+                {{ JinList.showTime }}
               </div>
               <div class="sub">
                 约135分钟，仅供参考，最终以现场实际时长为准
@@ -82,7 +81,7 @@
           <div class="main">
             <div class="left">
               <div class="notice">
-                深圳市 | 深圳保利剧院
+                {{ JinList.venueCity }} | {{ JinList.venueName }}
               </div>
               <div class="sub">
                 深圳市南山区后海滨路与文心五路交界处
@@ -213,6 +212,7 @@
 </template>
 
 <script>
+import { getList } from '../api/Home/index'
 import Vue from 'vue'
 import {
   GoodsAction,
@@ -237,8 +237,21 @@ export default {
     return {
       buy: false,
       price: false,
-      active: 0
+      active: 0,
+      JinList: []
     }
+  },
+  created () {
+    let id = this.$route.fullPath.split('=')[1]
+    getList().then(response => {
+      let res = response.data.data.projectInfo
+      res.forEach(item => {
+        if (Number(id) === item.id) {
+          this.JinList = item
+        }
+      })
+      // console.log(this.JinList)
+    })
   },
   methods: {
     onClickButton () {
