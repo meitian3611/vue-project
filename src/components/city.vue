@@ -1,5 +1,5 @@
 <template>
-<div class="page_city">
+<div class="page_city" ref="name">
  <H2>定位城市</H2>
  <div class="city_address">
    <button>定位中...</button>
@@ -9,48 +9,49 @@
   <van-grid-item
   v-for="item in cityList"
   :key="item.name"
-  :text="item.name" />
+  :text="item.name"
+  @click="address($event)"/>
 </van-grid>
 
   <van-index-bar :index-list="addressList" >
   <!-- <van-index-anchor v-for="(item, index) in delFirsts" :key="index">{{item.prefix.toLocaleUpperCase()}}</van-index-anchor> -->
     <!-- <van-cell v-for="item in cellList[0]" :key="item" :title="item"/> -->
     <van-index-anchor index="1">A</van-index-anchor>
-    <van-cell v-for="item in cellList[0]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[0]" :key="item" :title="item"  @click="address1($event)" />
       <van-index-anchor index="1">B</van-index-anchor>
-    <van-cell v-for="item in cellList[1]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[1]" :key="item" :title="item"  @click="address1($event)"/>
     <van-index-anchor index="2">C</van-index-anchor>
-    <van-cell v-for="item in cellList[2]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[2]" :key="item" :title="item"  @click="address1($event)"/>
      <van-index-anchor index="2">D</van-index-anchor>
-    <van-cell v-for="item in cellList[3]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[3]" :key="item" :title="item"  @click="address1($event)"/>
      <van-index-anchor index="2">E</van-index-anchor>
-    <van-cell v-for="item in cellList[4]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[4]" :key="item" :title="item"  @click="address1($event)"/>
      <van-index-anchor index="2">F</van-index-anchor>
-    <van-cell v-for="item in cellList[5]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[5]" :key="item" :title="item"  @click="address1($event)"/>
      <van-index-anchor index="2">G</van-index-anchor>
-    <van-cell v-for="item in cellList[6]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[6]" :key="item" :title="item"  @click="address1($event)"/>
      <van-index-anchor index="2">H</van-index-anchor>
-    <van-cell v-for="item in cellList[7]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[7]" :key="item" :title="item"  @click="address1($event)"/>
      <van-index-anchor index="2">J</van-index-anchor>
-    <van-cell v-for="item in cellList[8]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[8]" :key="item" :title="item"  @click="address1($event)"/>
      <van-index-anchor index="2">K</van-index-anchor>
-    <van-cell v-for="item in cellList[9]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[9]" :key="item" :title="item"  @click="address1($event)"/>
      <van-index-anchor index="2">L</van-index-anchor>
-    <van-cell v-for="item in cellList[10]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[10]" :key="item" :title="item"  @click="address1($event)"/>
      <van-index-anchor index="2">M</van-index-anchor>
-    <van-cell v-for="item in cellList[11]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[11]" :key="item" :title="item"  @click="address1($event)"/>
      <van-index-anchor index="2">N</van-index-anchor>
-    <van-cell v-for="item in cellList[12]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[12]" :key="item" :title="item"  @click="address1($event)"/>
       <van-index-anchor index="2">P</van-index-anchor>
-    <van-cell v-for="item in cellList[13]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[13]" :key="item" :title="item"  @click="address1($event)"/>
       <van-index-anchor index="2">Q</van-index-anchor>
-    <van-cell v-for="item in cellList[14]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[14]" :key="item" :title="item"  @click="address1($event)"/>
       <van-index-anchor index="2">R</van-index-anchor>
-    <van-cell v-for="item in cellList[15]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[15]" :key="item" :title="item"  @click="address1($event)"/>
       <van-index-anchor index="2">S</van-index-anchor>
-    <van-cell v-for="item in cellList[16]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[16]" :key="item" :title="item"  @click="address1($event)"/>
       <van-index-anchor index="2">T</van-index-anchor>
-    <van-cell v-for="item in cellList[17]" :key="item" :title="item"/>
+    <van-cell v-for="item in cellList[17]" :key="item" :title="item"  @click="address1($event)"/>
 
   ...
 </van-index-bar>
@@ -78,11 +79,11 @@ export default {
     axios.get('/json/city.json').then(res => {
       // console.log(res)
       let citys = res.data.data.areas
-      console.log(citys)
+      // console.log(citys)
       this.cityList = citys[0].cities
       let delFirst = [...citys]
       delFirst.shift()
-      console.log(delFirst)
+      // console.log(delFirst)
       this.delFirsts = delFirst
       let val = delFirst.map(item => item.prefix.toLocaleUpperCase())
       this.addressList = val
@@ -95,11 +96,39 @@ export default {
         arr.push(index.map(val => val.name))
         return arr
       })
-      console.log(arr)
+      // console.log(arr)
       this.cellList = arr
       // this.cellList = cell
       // let cell = delFirst.map(item => item.cities.name)
     })
+  },
+  methods: {
+    address ($event) {
+      document.getElementsByClassName('van-dropdown-item--down')[0].style.display = 'none'
+      document.getElementsByTagName('body')[0].className = ''
+      let clas = document.querySelector('.van-dropdown-menu__item span').getAttribute('class').split(' ').length
+      console.log(clas)
+      if (clas >= 3) {
+        document.querySelector('.van-dropdown-menu__item span').className = 'van-dropdown-menu__title'
+      } else if (clas === 1) {
+        document.querySelector('.van-dropdown-menu__item span').classList.add('van-dropdown-menu__title--active', 'van-dropdown-menu__title--down')
+      }
+      let inner = event.currentTarget.firstElementChild.innerHTML
+      this.$emit('cityAddr', inner)
+    },
+    address1 ($event) {
+      document.getElementsByClassName('van-dropdown-item--down')[0].style.display = 'none'
+      document.getElementsByTagName('body')[0].className = ''
+      let clas = document.querySelector('.van-dropdown-menu__item span').getAttribute('class').split(' ').length
+      console.log(clas)
+      if (clas >= 3) {
+        document.querySelector('.van-dropdown-menu__item span').className = 'van-dropdown-menu__title'
+      } else if (clas === 1) {
+        document.querySelector('.van-dropdown-menu__item span').classList.add('van-dropdown-menu__title--active', 'van-dropdown-menu__title--down')
+      }
+      let inner = event.currentTarget.firstElementChild.firstElementChild.innerHTML
+      this.$emit('cityAddr', inner)
+    }
   }
 }
 </script>
@@ -140,6 +169,7 @@ export default {
     button{
       width: 90px;
       height: 40px;
+      line-height: 40px;
       margin: 5px 0 0 20px;
       box-sizing: border-box;
       background: #ffffff;

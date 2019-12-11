@@ -1,5 +1,5 @@
 <template>
-  <div class="Detail_drama">
+  <div class="Detail_detailCommon">
     <van-list
   v-model="loading"
   :finished="finished"
@@ -9,6 +9,7 @@
   <van-cell
     v-for="item in lists"
     :key="item"
+    @click="toHome"
   >
   <div class='films_list'
     v-for="item in filmsList"
@@ -19,7 +20,7 @@
       <div class='films_right'>
         <span class='films_right_title'>{{item.name}}</span>
         <p class='films_right_address'>
-          {{item.cityName}}/{{item.showTime}}/{{item.venueName}}
+          {{item.cityName}}/{{item.showTime}}/{{item.venueName}}/{{item.id}}
         </p>
         <span class='films_seach'>可选座</span>
         <span class='films_price'>{{item.priceStr}}</span>
@@ -76,6 +77,12 @@ export default {
           this.finished = true
         }
       }, 500)
+    },
+    toHome ($event) {
+      console.log(this.filmsList)
+      let _id = $event.target.parentNode
+      console.log(_id)
+      this.$router.replace('/category')
     }
   }
 }
@@ -83,7 +90,7 @@ export default {
 
 <style lang = 'scss'>
 @import '~@/assets/mixins.scss';
-.Detail_drama{
+.Detail_detailCommon{
   @include Detail;
   .van-cell{
     /* height: 110px; */
