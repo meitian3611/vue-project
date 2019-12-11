@@ -1,0 +1,50 @@
+// 种类列表页公用样式
+@mixin Detail {
+  .films_list{
+    width: 100%;
+    height: 110px;
+    display: flex;
+    padding: 10px 0 10px 0;
+    .films_left{
+      font-size: 14px;
+      margin-right: 10px;
+      width:90px;
+      height: 110px;
+      img{
+        width: 90px;
+        height: 100%;
+      }
+    }
+    .films_right{
+      position: relative;
+      flex: 1;
+      width: 100%;
+      height: 110px;
+      padding-right: 20px;
+      .films_right_title{
+        color: #111;
+        width: 230px;
+        font-size: 14px;
+        font-weight: 700;
+      }
+      .films_right_address{
+        width: 230px;
+        padding-top: 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow:ellipsis;
+      }
+      .films_seach{
+        // margin:3px 3px 0 3px;
+        background: #7355ff;
+        display: inline-block;
+      }
+      .films_price{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        color: #ff1268;
+      }
+    }
+  }
+}

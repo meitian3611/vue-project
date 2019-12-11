@@ -37,6 +37,7 @@ const router = new VueRouter({
       path: '/detail',
       name: 'Detail',
       component: Detail,
+      // redirect: '/detail/all',
       children: [
         {
           path: 'all',

@@ -37,6 +37,12 @@ import axios from 'axios'
 Vue.use(List)
 Vue.use(Cell)
 export default {
+  props: {
+    path: {
+      type: String,
+      default: ''
+    }
+  },
   data () {
     return {
       lists: [],
@@ -46,7 +52,7 @@ export default {
     }
   },
   created () {
-    axios.get('/json/drama.json').then((res) => {
+    axios.get(`/json/${this.path}`).then((res) => {
       // console.log(res)
       let base = res.data.data.projectInfo
       // console.log(base)

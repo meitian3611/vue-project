@@ -5,10 +5,11 @@
     v-for="item in detailList"
     :title="item.name"
     :key="item.id"
-    :to="item.href">
-      内容区:{{item.name}}
+    :to="item.href"
+    v-model="curTabIndex"
+    >
+      <menus> </menus>
       <router-view></router-view>
-
     </van-tab>
 </van-tabs>
   </div>
@@ -17,9 +18,13 @@
 <script>
 import Vue from 'vue'
 import { Tab, Tabs } from 'vant'
+import menus from '../components/menus'
 Vue.use(Tab).use(Tabs)
 export default {
   name: 'Dateil',
+  components: {
+    menus
+  },
   data () {
     return {
       detailList: [
@@ -78,8 +83,14 @@ export default {
           name: '旅游展览',
           href: '/detail/all'
         }
-      ]
+      ],
+      curTabIndex: this.$route.fullPath
     }
+  },
+  mounted () {
+    // console.log(this.curTabIndex)
+    let paths = this.detailList.find(item => item.href === this.curTabIndex)
+    console.log(paths)
   }
 }
 </script>
