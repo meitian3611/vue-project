@@ -82,7 +82,7 @@
                 {{ JinList.venueCity }} | {{ JinList.venueName }}
               </div>
               <div class="sub">
-                深圳市南山区后海滨路与文心五路交界处
+                {{ JinList.categoryName }} | 评分：{{ JinList.discountRate }}
               </div>
             </div>
             <div class="right">
@@ -210,7 +210,7 @@
 </template>
 
 <script>
-import { getList, getMiddle, getDrama } from '../api/Home/index'
+import { getList, getMiddle, getConcert, getDrama } from '../api/Home/index'
 import Vue from 'vue'
 import {
   GoodsAction,
@@ -258,6 +258,15 @@ export default {
       let res = response.data.data.nearByCity
       res.forEach(item => {
         if (Number(idMiddle) === item.id) {
+          this.JinList = item
+        }
+      })
+    })
+    let idConcert = this.$route.fullPath.split('=')[1]
+    getConcert().then(response => {
+      let res = response.data.data.projectInfo
+      res.forEach(item => {
+        if (Number(idConcert) === item.id) {
           this.JinList = item
         }
       })
