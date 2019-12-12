@@ -52,13 +52,29 @@ export default {
       finished: false
     }
   },
-  created () {
+  mounted () {
+    //  && item.showTime.split('')[0].join('') === times
     axios.get(`/json/${this.path}`).then((res) => {
-      // console.log(res)
-      let base = res.data.data.projectInfo
-      // console.log(base)
-      this.filmsList = base
-      // console.log(this.filmsList)
+      const base = res.data.data.projectInfo
+      let names = JSON.parse(window.localStorage.getItem('city'))
+      let times = JSON.parse(window.localStorage.getItem('time'))
+      console.log(times)
+      // let str = "2019.12.31 周二"
+      // console.log(str.split(' ')[0])
+      if (names === '全国' && times === '全部时间') {
+        this.filmsList = base
+      } else if (names === '全国' && times) {
+        let timeItem = base.filter(item => {
+          return item.showTime.split(' ')[0].split('-')[0] === times
+        })
+        this.filmsList = timeItem
+      } else {
+        let getCity = base.filter(item => {
+          // console.log(item.showTime.split(' ')[0].split('-')[0])
+          return item.cityName === names && item.showTime.split(' ')[0].split('-')[0] === times
+        })
+        this.filmsList = getCity
+      }
     })
   },
 
@@ -73,7 +89,7 @@ export default {
         this.loading = false
 
         // 数据全部加载完成
-        if (this.lists.length >= 10) {
+        if (this.lists.length >= this.filmsList.length) {
           this.finished = true
         }
       }, 500)

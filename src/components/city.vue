@@ -81,7 +81,7 @@ export default {
       let citys = res.data.data.areas
       // console.log(citys)
       this.cityList = citys[0].cities
-      console.log(this.cityList)
+      // console.log(this.cityList)
       let delFirst = [...citys]
       delFirst.shift()
       // console.log(delFirst)
@@ -104,17 +104,23 @@ export default {
   methods: {
     address (item) {
       console.log(item)
+      window.localStorage.setItem('city', JSON.stringify(item))
       let clas = document.getElementsByTagName('body')[0].className
       if (clas) {
         document.getElementsByClassName('van-dropdown-item--down')[0].style.display = 'none'
       }
+      // this.$router.replace('/detail')
+      this.$router.go(0)
       this.$emit('cityAddr', item)
     },
     address1 (item) {
+      console.log(item)
+      window.localStorage.setItem('city', JSON.stringify(item))
       let clas = document.getElementsByTagName('body')[0].className
       if (clas) {
         document.getElementsByClassName('van-dropdown-item--down')[0].style.display = 'none'
       }
+      this.$router.go(0)
       this.$emit('cityAddr', item)
     }
   }

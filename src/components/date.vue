@@ -2,10 +2,7 @@
   <div class='date_page'>
     <div class="time">
       <ul>
-        <li>全部时间</li>
-        <li>本周</li>
-        <li>这周</li>
-        <li>周末</li>
+        <li v-for="item in dataList" :key="item" @click="titles(item)">{{item}}</li>
       </ul>
     </div>
    <ele-calendar
@@ -26,6 +23,7 @@ export default {
   name: 'Date',
   data () {
     return {
+      dataList: ['全部时间', '本周', '本月', '周末'],
       datedef: [
         { 'date': '2019-12-10', 'content': '有演出', 'cid': null },
         { 'date': '2019-12-12', 'content': null, 'cid': null },
@@ -59,15 +57,25 @@ export default {
         </div>
       )
     },
-    showDate () {
-      console.log(666)
+    titles (item) {
+      console.log(item)
+      let clas = document.getElementsByTagName('body')[0].className
+      if (clas) {
+        document.getElementsByClassName('van-dropdown-item--down')[1].style.display = 'none'
+      }
+      window.localStorage.setItem('time', JSON.stringify(item))
+      this.$router.go(0)
+      this.$emit('showDate', item)
     },
     getData (data, event, row, dome) {
       let clas = document.getElementsByTagName('body')[0].className
       if (clas) {
         document.getElementsByClassName('van-dropdown-item--down')[1].style.display = 'none'
       }
+      let saveDate = moment(data).format('YYYY.MM.DD')
+      window.localStorage.setItem('time', JSON.stringify(saveDate))
       let datas = moment(data).format('MM月DD日')
+      this.$router.go(0)
       this.$emit('showDate', datas)
     }
   }

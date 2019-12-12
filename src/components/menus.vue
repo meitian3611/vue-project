@@ -42,8 +42,20 @@ export default {
         { text: '山的那边', value: 'b' },
         { text: '山的这边', value: 'c' }
       ],
-      addres: '中国',
+      addres: '全国',
       dates: '全部时间'
+    }
+  },
+  mounted () {
+    let names = JSON.parse(window.localStorage.getItem('city'))
+    this.addres = names
+    let times = JSON.parse(window.localStorage.getItem('time'))
+    let size = times.charAt(0).charCodeAt()
+    let date = [times.split('.')[1] + '月', times.split('.')[2] + '日'].join('')
+    if (size < 100) {
+      this.dates = date
+    } else {
+      this.dates = times
     }
   },
   methods: {
@@ -51,16 +63,6 @@ export default {
       console.log(this.$event)
       this.$refs.item.toggle()
     },
-    // change ($event) {
-    //   console.log($event, 666)
-    //   let clas = document.getElementsByTagName('body')[0].className
-    //   console.log(clas)
-    //   if (!clas) {
-    //     document.getElementsByClassName('van-dropdown-item--down')[0].style.display = 'block'
-    //     document.getElementsByTagName('body')[0].className = 'van-overflow-hidden'
-    //     document.querySelectorAll('.van-dropdown-menu__item span')[0].classList.add('van-dropdown-menu__title--active', 'van-dropdown-menu__title--down')
-    //   }
-    // },
     getAddr ($event) {
       this.addres = $event
     },
