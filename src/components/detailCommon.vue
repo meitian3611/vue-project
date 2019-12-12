@@ -9,11 +9,11 @@
   <van-cell
     v-for="item in lists"
     :key="item"
-    @click="toHome"
   >
   <div class='films_list'
     v-for="item in filmsList"
-    :key="item.name">
+    :key="item.name"
+    @click="toHome(item.id, item, $event)">
       <div class='films_left'>
         <img :src='item.verticalPic' alt=''>
       </div>
@@ -78,8 +78,9 @@ export default {
         }
       }, 500)
     },
-    toHome ($event) {
-      this.$router.replace('/category')
+    toHome (val, item, $event) {
+      console.log(val, item, $event)
+      this.$router.replace({ path: `/category/id=${val}`, item })
     }
   }
 }
