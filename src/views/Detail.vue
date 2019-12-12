@@ -1,6 +1,6 @@
 <template>
   <div class="Dateil_page">
-  <van-tabs @click="curTabIndex">
+  <van-tabs @click="curTabIndex" v-model="index">
     <van-tab
     v-for="item in detailList"
     :title="item.name"
@@ -81,7 +81,8 @@ export default {
           href: '/detail/all'
         }
       ],
-      replace: true
+      replace: true,
+      index: 4
     }
   },
   methods: {
@@ -91,6 +92,13 @@ export default {
       // console.log(name, title, paths)
       // console.log(666)
     }
+  },
+  mounted () {
+    let name = this.$route.path
+    let index1 = this.detailList.find(item => item.href === name)
+    this.index = (index1.id) - 1
+    // console.log(name)
+    // console.log(this.index)
   }
 }
 </script>
