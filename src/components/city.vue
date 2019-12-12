@@ -81,15 +81,6 @@ export default {
       let citys = res.data.data.areas
       // console.log(citys)
       this.cityList = citys[0].cities
-<<<<<<< HEAD
-      // console.log(this.cityList)
-=======
-<<<<<<< HEAD
-      // console.log(this.cityList)
-=======
-      console.log(this.cityList)
->>>>>>> 792a2a7e468fa66b707ab8c88c61f3b2089e24cb
->>>>>>> c83c4201a075433b6539abe56b2a586a091faf5b
       let delFirst = [...citys]
       delFirst.shift()
       // console.log(delFirst)
