@@ -15,7 +15,8 @@
               <label>手机号：</label>
           </label> -->
         <div class="phone-code-select">
-          <div class="phone-code">+852<i class="iconfont icon-arrow">
+          <div class="phone-code" @click="onSelect">+852<i class="iconfont icon-arrow">
+              <van-action-sheet v-model="show" :actions="actions" @select="onSelect" />
               <van-icon name="arrow-down" /></i>
           </div>
         </div>
@@ -78,19 +79,31 @@
 import Vue from 'vue'
 // import { Login } from '../api/user'
 import { mapActions } from 'vuex'
-import { Icon } from 'vant'
+import { Icon, ActionSheet, Toast } from 'vant'
 
-Vue.use(Icon)
+Vue.use(Icon, ActionSheet)
 export default {
   name: 'Login',
 
   data () {
     return {
       username: '',
-      password: ''
+      password: '',
+      show: false,
+      actions: [
+        { name: '选项' },
+        { name: '选项' },
+        { name: '选项', subname: '描述信息' }
+      ]
     }
   },
   methods: {
+    onSelect (item) {
+      // 默认情况下，点击选项时不会自动关闭菜单
+      // 可以通过 close-on-click-action 属性开启自动关闭
+      this.show = true
+      Toast(item.name)
+    },
     // fn1 () {
     //   // 将 window.isLogin = true
     //   window.isLogin = true

@@ -53,9 +53,9 @@
       <van-index-anchor index="2">T</van-index-anchor>
     <van-cell v-for="item in cellList[17]" :key="item" :title="item"  @click="address1(item)"/>
 
-  ...
-</van-index-bar>
-</div>
+      ...
+    </van-index-bar>
+  </div>
 </template>
 
 <script>
@@ -81,7 +81,15 @@ export default {
       let citys = res.data.data.areas
       // console.log(citys)
       this.cityList = citys[0].cities
+<<<<<<< HEAD
       // console.log(this.cityList)
+=======
+<<<<<<< HEAD
+      // console.log(this.cityList)
+=======
+      console.log(this.cityList)
+>>>>>>> 792a2a7e468fa66b707ab8c88c61f3b2089e24cb
+>>>>>>> c83c4201a075433b6539abe56b2a586a091faf5b
       let delFirst = [...citys]
       delFirst.shift()
       // console.log(delFirst)
@@ -128,39 +136,36 @@ export default {
 </script>
 
 <style lang="scss">
-.page_city{
+.page_city {
   .van-dropdown-item__content {
     position: absolute;
     max-height: 100%;
-}
-.van-index-anchor{
-  background: #f2f3f4;
-}
-.van-grid{
-  margin-bottom: 10px;
-  margin-top: 5px;
-
-}
-  h1{
+  }
+  .van-index-anchor {
+    background: #f2f3f4;
+  }
+  .van-grid {
+    margin-bottom: 10px;
+    margin-top: 5px;
+  }
+  h1 {
     padding: 3px;
     font-size: 14px;
     padding-left: 10px;
-  background: #f2f3f4;
-
+    background: #f2f3f4;
   }
-  h2{
+  h2 {
     font-size: 14px;
     padding-left: 10px;
-  background: #f2f3f4;
-
+    background: #f2f3f4;
   }
-  .city_address{
-    width:100%;
+  .city_address {
+    width: 100%;
     height: 50px;
     // text-align: left;
     line-height: 50px;
     margin: 5px 0 5px 0;
-    button{
+    button {
       width: 90px;
       height: 40px;
       line-height: 40px;
@@ -171,7 +176,7 @@ export default {
       border: 1px solid #e7e7e7;
     }
   }
-  .van-grid-item{
+  .van-grid-item {
     // display: inline-block;
     // box-sizing: border-box;
     text-align: center;
@@ -180,7 +185,7 @@ export default {
     margin: 4px 10px 0px 15px;
     font-size: 16px;
   }
-  .van-grid-item__content{
+  .van-grid-item__content {
     padding: 8px;
   }
 }
