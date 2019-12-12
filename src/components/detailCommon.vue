@@ -80,7 +80,7 @@ export default {
     },
     toHome (val, item, $event) {
       console.log(val, item, $event)
-      this.$router.replace({ path: `/category/id=${val}`, item })
+      this.$router.replace(`/category/id=${val}`)
     }
   }
 }
