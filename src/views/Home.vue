@@ -5,9 +5,10 @@
     <div class="home-top">
       <router-link
         class="left"
-        to="/city"
-      >
-        <i class="iconfont icondanseshixintubiao-"></i>深圳</router-link>
+        to="/city">
+        <i class="iconfont icondanseshixintubiao-"></i>
+        深圳
+        </router-link>
       <router-link
         class="center"
         to="/"
