@@ -10,7 +10,7 @@ const token = window.localStorage.getItem('token')
 
 export default new Vuex.Store({
   state: {
-    userInfo: userInfo ? JSON.stringify(userInfo) : null,
+    userInfo: userInfo || null,
     token: token || null
   },
   mutations: {
@@ -39,7 +39,7 @@ export default new Vuex.Store({
           // 2. 本地存储一份数据
           window.localStorage.setItem(
             'userInfo',
-            JSON.stringify(result.data.userInfo)
+            result.data.userInfo
           )
           window.localStorage.setItem('token', result.data.token)
           // 3. 跳转回个人中心页(编程式导航)

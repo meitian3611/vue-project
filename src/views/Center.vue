@@ -2,7 +2,7 @@
   <div class="myCenter">
     <div class="myPhoto">
       <img class="myPic" src="http://perico.damai.cn/userheadphotos/759450/151890007.jpg" alt="">
-      <span class="myName" v-if="userInfo">{{ userInfo }}</span>
+      <span class="myName" v-if="userInfo">{{userInfo}}</span>
     </div>
     <ul class="myList">
       <li>
@@ -36,7 +36,7 @@
         <router-link to="servicephone">客服电话<span>1010-3721></span></router-link>
       </li>
     </ul>
-    <button class="logout">退出登录</button>
+    <button class="logout" @click="Logout">退出登录</button>
     <div class="about">
       <router-link to="">关于大麦</router-link> |
       <router-link to="">联系我们</router-link>
@@ -50,6 +50,15 @@ export default {
   name: 'Center',
   computed: {
     ...mapState(['userInfo'])
+  },
+
+  methods: {
+    Logout () {
+      this.$router.push('/')
+      // console.log(window.localStorage)
+      window.localStorage.userInfo = ''
+      window.location.reload(true)
+    }
   }
 }
 </script>

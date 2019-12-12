@@ -1,8 +1,8 @@
 <template>
 <div class="page_menus">
   <van-dropdown-menu active-color="#ff1268">
-  <van-dropdown-item :title="addres" ref="item">
-      <City @cityAddr='getAddr($event)' @click="onConfirm"> </City>
+  <van-dropdown-item :title="addres" ref="item" @chage="change($event)">
+      <City @cityAddr='getAddr($event)' @click="onConfirm($event)"> </City>
   </van-dropdown-item>
    <van-dropdown-item :title="dates" ref="item">
       <Date @showDate='getDate($event)'> </Date>
@@ -47,9 +47,20 @@ export default {
     }
   },
   methods: {
-    onConfirm () {
+    onConfirm ($event) {
+      console.log(this.$event)
       this.$refs.item.toggle()
     },
+    // change ($event) {
+    //   console.log($event, 666)
+    //   let clas = document.getElementsByTagName('body')[0].className
+    //   console.log(clas)
+    //   if (!clas) {
+    //     document.getElementsByClassName('van-dropdown-item--down')[0].style.display = 'block'
+    //     document.getElementsByTagName('body')[0].className = 'van-overflow-hidden'
+    //     document.querySelectorAll('.van-dropdown-menu__item span')[0].classList.add('van-dropdown-menu__title--active', 'van-dropdown-menu__title--down')
+    //   }
+    // },
     getAddr ($event) {
       this.addres = $event
     },
