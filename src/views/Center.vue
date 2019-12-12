@@ -36,7 +36,7 @@
         <router-link to="servicephone">客服电话<span>1010-3721></span></router-link>
       </li>
     </ul>
-    <button class="logout">退出登录</button>
+    <button class="logout" @click="Logout">退出登录</button>
     <div class="about">
       <router-link to="">关于大麦</router-link> |
       <router-link to="">联系我们</router-link>
@@ -50,6 +50,15 @@ export default {
   name: 'Center',
   computed: {
     ...mapState(['userInfo'])
+  },
+
+  methods: {
+    Logout () {
+      this.$router.push('/')
+      // console.log(window.localStorage)
+      window.localStorage.userInfo = ''
+      window.location.reload(true)
+    }
   }
 }
 </script>

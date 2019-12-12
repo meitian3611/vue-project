@@ -13,7 +13,6 @@
         <!-- <label for="" class="fm-label">
             <span>
               <label>手机号：</label>
-            </span>
           </label> -->
         <div class="phone-code-select">
           <div class="phone-code">+852<i class="iconfont icon-arrow">
@@ -23,7 +22,7 @@
         <div class="input-loginId">
           <input
             type="tel"
-            placeholder="请输入手机号"
+            placeholder="请输入用户名"
             class="fm-text"
             v-model="username"
           >
@@ -32,17 +31,17 @@
       </div>
       <div class="fm-smscode">
         <input
-          type="tel"
-          placeholder="请输验证码"
+          type="password"
+          placeholder="请输入密码"
           class="fm-text"
           v-model="password"
         >
-        <div class="send-btn">
+        <!-- <div class="send-btn">
           <a
             href="javascript:void(0);"
             class="send-btn-link"
           >获取验证码</a>
-        </div>
+        </div> -->
         <div class="underline"></div>
       </div>
 
@@ -58,7 +57,7 @@
           href="javascript:void(0);"
           class="password-login-link"
         >账号密码登录</a>
-        <router-link to="/register"></router-link>
+        <router-link to="/register">新用户注册</router-link>
       </div>
 
       <div class="sns-login">
@@ -91,7 +90,6 @@ export default {
       password: ''
     }
   },
-
   methods: {
     // fn1 () {
     //   // 将 window.isLogin = true
