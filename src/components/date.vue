@@ -61,13 +61,11 @@ export default {
       console.log(666)
     },
     getData (data, event, row, dome) {
-      document.getElementsByClassName('van-dropdown-item--down')[1].style.display = 'none'
-      document.getElementsByTagName('body')[0].className = ''
-      let clas = document.querySelectorAll('.van-dropdown-menu__item span')[1].getAttribute('class').split(' ').length
-      if (clas >= 3) {
+      let clas = document.getElementsByTagName('body')[0].className
+      if (clas) {
+        document.getElementsByClassName('van-dropdown-item--down')[1].style.display = 'none'
+        document.getElementsByTagName('body')[0].className = ''
         document.querySelectorAll('.van-dropdown-menu__item span')[1].className = 'van-dropdown-menu__title'
-      } else if (clas === 1) {
-        document.querySelectorAll('.van-dropdown-menu__item span')[1].classList.add('van-dropdown-menu__title--active', 'van-dropdown-menu__title--down')
       }
       let datas = moment(data).format('MM月DD日')
       this.$emit('showDate', datas)
