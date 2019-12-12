@@ -9,83 +9,72 @@
     </div>
     <div id="login-iframe">
 
-        <div class="fm-mobile">
-          <!-- <label for="" class="fm-label">
+      <div class="fm-mobile">
+        <!-- <label for="" class="fm-label">
             <span>
               <label>手机号：</label>
             </span>
           </label> -->
-          <div class="phone-code-select">
-            <div class="phone-code">+852<i class="iconfont icon-arrow">
-                <van-icon name="arrow-down" /></i>
-            </div>
-            <van-action-sheet
-              v-model="show"
-              :actions="actions"
-              @select="onSelect"
-            />
-            <!-- <header>
-                <a
-                  class="cancel-btn"
-                  href="javascript:void(0);"
-                >取消</a>
-                <a
-                  class="ok-btn"
-                  href="javascript:void(0);"
-                >确认</a>
-              </header> -->
+        <div class="phone-code-select">
+          <div class="phone-code">+852<i class="iconfont icon-arrow">
+              <van-icon name="arrow-down" /></i>
           </div>
-          <div class="input-loginId">
-            <input
-              type="tel"
-              placeholder="请输入手机号"
-              class="fm-text"
-            >
-            <div class="underline"></div>
-          </div>
+          <van-action-sheet
+            v-model="show"
+            :actions="actions"
+            @select="onSelect"
+          />
         </div>
-        <div class="fm-smscode">
+        <div class="input-loginId">
           <input
             type="tel"
-            placeholder="请输验证码"
+            placeholder="请输入手机号"
             class="fm-text"
+            v-model="username"
           >
-          <div class="send-btn">
-            <a
-              href="javascript:void(0);"
-              class="send-btn-link"
-            >获取验证码</a>
-          </div>
           <div class="underline"></div>
         </div>
-
-        <div class="fm-btn">
-          <button
-            class="fm-button"
-            @click="fn1"
-          >登录</button>
-        </div>
-
-        <div class="longin-link">
+      </div>
+      <div class="fm-smscode">
+        <input
+          type="tel"
+          placeholder="请输验证码"
+          class="fm-text"
+          v-model="password"
+        >
+        <div class="send-btn">
           <a
             href="javascript:void(0);"
-            class="password-login-link"
-          >账号密码登录</a>
-          <a
-            href=""
-            class="register-link"
-          >新用户注册</a>
+            class="send-btn-link"
+          >获取验证码</a>
         </div>
+        <div class="underline"></div>
+      </div>
 
-        <div class="sns-login">
-          <div class="sns-login-title">其他方式登录</div>
-          <div class="taobao-login">
-            <a
-              href="javascript:;"
-              class="iconfont icon-taobao"
-            ></a>
-          </div>
+      <div class="fm-btn">
+        <button
+          class="fm-button"
+          @click="handleLogin"
+        >登录</button>
+      </div>
+
+      <div class="longin-link">
+        <a
+          href="javascript:void(0);"
+          class="password-login-link"
+        >账号密码登录</a>
+        <router-link to="/register"></router-link>
+      </div>
+
+      <div class="sns-login">
+        <div class="sns-login-title">其他方式登录</div>
+        <div class="taobao-login">
+          <a
+            href="javascript:;"
+            class="iconfont icon-taobao"
+          ></a>
         </div>
+      </div>
 
     </div>
   </div>
@@ -93,20 +82,20 @@
 
 <script>
 import Vue from 'vue'
+// import { Login } from '../api/user'
+import { mapActions } from 'vuex'
 import { Icon, ActionSheet, Toast } from 'vant'
 
 Vue.use(Icon)
 Vue.use(ActionSheet)
 Vue.use(Toast)
 export default {
+  name: 'Login',
+
   data () {
     return {
-      show: false,
-      actions: [
-        { name: '选项' },
-        { name: '选项' },
-        { name: '选项', subname: '描述信息' }
-      ]
+      username: '',
+      password: ''
     }
   },
 
@@ -118,15 +107,47 @@ export default {
       Toast(item.name)
     },
 
-    fn1 () {
-      // 将 window.isLogin = true
-      window.isLogin = true
+    // fn1 () {
+    //   // 将 window.isLogin = true
+    //   window.isLogin = true
 
-      // 获取 url 地址上的 redirect 参数
-      let redirect = this.$route.query.redirect || '/'
+    //   // 获取 url 地址上的 redirect 参数
+    //   let redirect = this.$route.query.redirect || '/'
 
-      // 跳转回首页
-      this.$router.replace(redirect)
+    //   // 跳转回首页
+    //   this.$router.replace(redirect)
+    // },
+
+    ...mapActions(['loginAsync']),
+
+    handleLogin () {
+      this.loginAsync({
+        username: this.username,
+        password: this.password,
+        callback: () => {
+          let redirect = this.$route.query.redirect || '/center'
+          this.$router.replace(redirect)
+        }
+      })
+
+      // this.$store.dispatch('loginAsync')
+
+      // Login({
+      //   username: this.username,
+      //   password: this.password
+      // }).then(response => {
+      //   let result = response.data
+      //   console.log(result)
+
+      //   if (result.code === 0) {
+      //     // 登录成功
+      //     // 1. 将数据写入到仓库中
+      //     this.$store.commit('LOGIN', result.data)
+      //   } else {
+      //     // 登录失败
+      //     alert(result.msg)
+      //   }
+      // })
     }
   }
 }

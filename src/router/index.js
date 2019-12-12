@@ -4,7 +4,6 @@ import Category from '../views/Category.vue'
 import City from '../views/City.vue'
 import Detail from '../views/Detail.vue'
 import Home from '../views/Home.vue'
-import Login from '../views/Login.vue'
 import All from '../views/Detail/All.vue'
 import Drama from '../views/Detail/Drama.vue'
 import Concert from '../views/Detail/Concert.vue'
@@ -14,6 +13,9 @@ import Ballet from '../views/Detail/Ballet.vue'
 import Sports from '../views/Detail/Sports.vue'
 import Children from '../views/Detail/Children.vue'
 
+import store from '../store'
+import Login from '../views/Login.vue'
+import Register from '../views/Register.vue'
 import Center from '../views/Center.vue'
 import VipCenter from '../views/Center/VipCenter.vue'
 import MyOrder from '../views/Center/MyOrder.vue'
@@ -104,6 +106,11 @@ const router = new VueRouter({
       component: Login
     },
     {
+      path: '/register',
+      name: 'Register',
+      component: Register
+    },
+    {
       path: '/center',
       name: 'Center',
       component: Center,
@@ -177,9 +184,16 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // console.log('全局 前置', to)
-  if (to.meta.needLogin && !window.isLogin) {
+  const userInfo = store.state.userInfo
+  if (!userInfo && to.meta.needLogin) {
     // 判断当前是否有登录状态
-    next(`/login?redirect=${to.fullPath}`)
+    // next(`/login?redirect=${to.fullPath}`)
+    next({
+      path: '/login',
+      query: {
+        redirect: to.fullPath
+      }
+    })
   } else {
     next()
   }
