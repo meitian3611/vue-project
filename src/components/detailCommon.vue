@@ -79,7 +79,7 @@ export default {
       }, 500)
     },
     toHome (val, item, $event) {
-      console.log(val, item, $event)
+      // console.log(val, item, $event)
       this.$router.replace(`/category/id=${val}`)
     }
   }

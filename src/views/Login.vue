@@ -19,11 +19,6 @@
           <div class="phone-code">+852<i class="iconfont icon-arrow">
               <van-icon name="arrow-down" /></i>
           </div>
-          <van-action-sheet
-            v-model="show"
-            :actions="actions"
-            @select="onSelect"
-          />
         </div>
         <div class="input-loginId">
           <input
@@ -84,11 +79,9 @@
 import Vue from 'vue'
 // import { Login } from '../api/user'
 import { mapActions } from 'vuex'
-import { Icon, ActionSheet, Toast } from 'vant'
+import { Icon } from 'vant'
 
 Vue.use(Icon)
-Vue.use(ActionSheet)
-Vue.use(Toast)
 export default {
   name: 'Login',
 
@@ -100,13 +93,6 @@ export default {
   },
 
   methods: {
-    onSelect (item) {
-      // 默认情况下，点击选项时不会自动关闭菜单
-      // 可以通过 close-on-click-action 属性开启自动关闭
-      this.show = false
-      Toast(item.name)
-    },
-
     // fn1 () {
     //   // 将 window.isLogin = true
     //   window.isLogin = true
