@@ -15,8 +15,15 @@
               <label>手机号：</label>
           </label> -->
         <div class="phone-code-select">
-          <div class="phone-code" @click="onSelect">+852<i class="iconfont icon-arrow">
-              <van-action-sheet v-model="show" :actions="actions" @select="onSelect" />
+          <div class="phone-code" @click="onSelect">{{msg}}<i class="iconfont icon-arrow">
+              <van-action-sheet
+                v-model="show"
+                :actions="actions"
+                cancel-text="取消"
+                @cancel="onCancel"
+                @select="onSelect"
+                close-on-click-action
+                 />
               <van-icon name="arrow-down" /></i>
           </div>
         </div>
@@ -91,10 +98,12 @@ export default {
       password: '',
       show: false,
       actions: [
-        { name: '选项' },
-        { name: '选项' },
-        { name: '选项', subname: '描述信息' }
-      ]
+        { name: '+852' },
+        { name: '+853' },
+        { name: '+856' }
+      ],
+      msg: '+852',
+      hide: true
     }
   },
   methods: {
@@ -102,8 +111,26 @@ export default {
       // 默认情况下，点击选项时不会自动关闭菜单
       // 可以通过 close-on-click-action 属性开启自动关闭
       this.show = true
-      Toast(item.name)
+      if (Toast(item.name).message) {
+        this.msg = Toast(item.name).message
+      }
+      // this.msg = Toast(item.name).message
     },
+
+    onCancel () {
+      // 默认情况下，点击选项时不会自动关闭菜单
+      // 可以通过 close-on-click-action 属性开启自动关闭
+      this.show = true
+      this.closeOnClickAction = true
+      Toast('cancel')
+    },
+
+    // actionsArr () {
+    //   actions.map(item => {
+    //     return this.item
+    //     console.log(this.item)
+    //   })
+    // },
     // fn1 () {
     //   // 将 window.isLogin = true
     //   window.isLogin = true
@@ -168,9 +195,9 @@ export default {
 #login-iframe {
   padding: 20px;
   .fm-mobile {
-    border-bottom: 1px solid #ddd;
     display: flex;
     height: 42px;
+    border-bottom: 1px solid #ddd;
     .phone-code-select {
       .phone-code {
         text-align: center;
@@ -181,6 +208,7 @@ export default {
       }
       .input-loginId {
         flex: 1;
+
       }
     }
     .input-loginId {
@@ -191,6 +219,7 @@ export default {
         line-height: 42px;
         padding-left: 14px;
         font-size: 14px;
+        box-sizing: border-box;
       }
     }
 
@@ -284,5 +313,9 @@ export default {
       }
     }
   }
+}
+
+.actived{
+  border-bottom: 2px solid #ff1268;
 }
 </style>
