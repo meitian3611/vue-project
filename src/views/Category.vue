@@ -153,14 +153,17 @@
         <div class="title"><span>场次 </span> 场次时间均为演出当地时间</div>
         <div class="button">
           <van-button
+            @click="btn($event)"
             color="#eee"
             size="normal"
           >2020-01-17 周五 19:30</van-button>
           <van-button
+            @click="btn($event)"
             color="#eee"
             size="normal"
           >2020-01-19 周日 14:00</van-button>
           <van-button
+            @click="btn($event)"
             color="#eee"
             size="normal"
           >2020-01-19 周日 19:30</van-button>
@@ -210,7 +213,7 @@
 </template>
 
 <script>
-import { getList, getMiddle, getConcert, getDrama } from '../api/Home/index'
+import { getList, getMiddle, getConcert, getDrama, getVocal, getQuwan } from '../api/Home/index'
 import Vue from 'vue'
 import {
   GoodsAction,
@@ -238,9 +241,6 @@ export default {
       active: 0,
       JinList: []
     }
-  },
-  mounted () {
-    console.log(this.$route)
   },
   created () {
     let id = this.$route.fullPath.split('=')[1]
@@ -280,6 +280,24 @@ export default {
         }
       })
     })
+    let idVocal = this.$route.fullPath.split('=')[1]
+    getVocal().then(response => {
+      let res = response.data.data.projectInfo
+      res.forEach(item => {
+        if (Number(idVocal) === item.id) {
+          this.JinList = item
+        }
+      })
+    })
+    let idQuwan = this.$route.fullPath.split('=')[1]
+    getQuwan().then(response => {
+      let res = response.data.data.projectInfo
+      res.forEach(item => {
+        if (Number(idQuwan) === item.id) {
+          this.JinList = item
+        }
+      })
+    })
   },
   methods: {
     onClickButton () {
@@ -287,6 +305,10 @@ export default {
     },
     onPrice () {
       this.price = true
+    },
+    btn ($event) {
+      $event.currentTarget.style.background = 'rgba(255,45,121,.1)'
+      $event.currentTarget.firstChild.style.color = '#ff2d79'
     }
   }
 }

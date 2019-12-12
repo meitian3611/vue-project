@@ -15,4 +15,18 @@ const getDrama = () => {
 const getConcert = () => {
   return axios.get('../../../json/concert.json')
 }
-export { getBannerList, getMiddle, getList, getDrama, getConcert }
+const getVocal = () => {
+  return axios.get('../../../json/vocal.json')
+}
+const getQuwan = () => {
+  return axios.get('../../../json/quwan.json')
+}
+export {
+  getBannerList,
+  getMiddle,
+  getList,
+  getDrama,
+  getConcert,
+  getVocal,
+  getQuwan
+}

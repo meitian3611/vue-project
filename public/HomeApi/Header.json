@@ -39,13 +39,13 @@
       },
       {
         "pic": "https://img.alicdn.com/tps/i4/TB1XNKjRrvpK1RjSZPiwu2mwXXa.png",
-        "schema": "https://m.damai.cn/damai/category/index.html?pos=2&acm=2018091714.1003.2.4476523&scm=1003.2.2018091714.OTHER_1567989497763_4476523&categoryId=3&utm=C1BRGr",
+        "schema": "/detail/vocal",
         "title": "话剧歌剧",
         "titleColor": "#000000"
       },
       {
         "pic": "https://img.alicdn.com/tps/i4/TB1LgakRxTpK1RjSZFKwu12wXXa.png",
-        "schema": "https://m.damai.cn/damai/category/index.html?pos=3&acm=2018091714.1003.2.4476523&scm=1003.2.2018091714.OTHER_1566826911354_4476523&categoryId=2&utm=jBPxrj",
+        "schema": "/detail/concert",
         "title": "音乐会",
         "titleColor": "#000000"
       },
@@ -57,7 +57,7 @@
       },
       {
         "pic": "https://img.alicdn.com/tps/i4/TB1gzigRrPpK1RjSZFFwu15PpXa.png",
-        "schema": "https://m.damai.cn/damai/category/index.html?pos=5&acm=2018091714.1003.2.4476523&scm=1003.2.2018091714.OTHER_1570219037652_4476523&categoryId=5&utm=CF3HtE",
+        "schema": "/detail/quwan",
         "title": "曲苑杂坛",
         "titleColor": "#000000"
       },
