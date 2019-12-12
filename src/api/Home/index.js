@@ -9,4 +9,10 @@ const getMiddle = () => {
 const getList = () => {
   return axios.get('../../../HomeApi/List.json')
 }
-export { getBannerList, getMiddle, getList }
+const getDrama = () => {
+  return axios.get('../../../json/drama.json')
+}
+const getConcert = () => {
+  return axios.get('../../../json/concert.json')
+}
+export { getBannerList, getMiddle, getList, getDrama, getConcert }
