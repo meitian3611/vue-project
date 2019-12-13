@@ -30,7 +30,6 @@ body {
     }
   }
   .content {
-    width: 100%;
     flex: 1;
     overflow: auto;
     display: block;
@@ -193,12 +192,41 @@ body {
       }
     }
     .container {
+      height: 70%;
       .van-ellipsis {
         font-size: 16px;
       }
-      .section{
-        .subtitle{
-          font-size: 20px;
+      .section {
+        .subtitle {
+          box-sizing: border-box;
+          font-size: 18px;
+          color: #000;
+          font-weight: 700;
+          margin: 20px;
+        }
+        .content {
+          margin: 0 20px;
+          display: flex;
+          flex-direction: column;
+          .info-item {
+            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            .item-title {
+              display: flex;
+              margin-bottom: 12px;
+              align-items: center;
+              .item-text {
+                font-size: 14px;
+                color: #000;
+              }
+            }
+            .text {
+              font-size: 14px;
+              color: #9c9ca5;
+              display: flex;
+            }
+          }
         }
       }
       .van-tab {

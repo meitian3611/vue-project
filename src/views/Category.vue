@@ -132,6 +132,26 @@
                     本项目每个场次每笔订单最多购买4张；如超出该数量，您可以分多单购买
                   </div>
                 </div>
+                <div class="info-item">
+                  <div class="item-title">
+                    <div class="item-text">
+                      我购买后是否可以退换票？
+                    </div>
+                  </div>
+                  <div class="text">
+                    票品为有价证券，非普通商品，其背后承载的文化服务具有时效性、稀缺性等特征，不支持退换。如您购票后无法正常观看，还请自行处理
+                  </div>
+                </div>
+                <div class="info-item">
+                  <div class="item-title">
+                    <div class="item-text">
+                      我如何入场？
+                    </div>
+                  </div>
+                  <div class="text">
+                    本项目提供纸质票，当天请务必携带收到的纸质门票，验票后入场（仅提供订单或订单截图无效）
+                  </div>
+                </div>
               </div>
             </div>
           </van-tab>

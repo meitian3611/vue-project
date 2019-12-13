@@ -76,7 +76,10 @@
     </div>
     <h2 class="home-more">更多演出</h2>
     <!-- 下拉菜单 -->
-    <div class="home-down" style="margin-bottom:50px">
+    <div
+      class="home-down"
+      style="margin-bottom:50px"
+    >
       <van-sticky>
         <div class="home-list">
           <van-dropdown-menu active-color="#ff1268">
@@ -118,6 +121,7 @@ import Vue from 'vue'
 import Swiper from '../components/Swiper'
 import { Search, Swipe, SwipeItem, Grid, GridItem, DropdownMenu, DropdownItem, Card, Sticky } from 'vant'
 import { getBannerList, getMiddle, getList } from '../api/Home/index'
+// import { home } from '../api/api'
 Vue.use(Swipe).use(SwipeItem)
 Vue.use(Search)
 Vue.use(Grid).use(GridItem)
@@ -176,9 +180,6 @@ export default {
       this.Middle = res.data.nearByCity.map(item => item)
     })
     getList().then(response => {
-      // let res = response.data
-      // this.cards = res.data.projectInfo.map(item => item)
-      // console.log(this.cards)
       let get = JSON.parse(localStorage.getItem('mtList'))
       this.option1[11].text = get
       let name = response.data.data.projectInfo.filter(item => item.categoryName === get)
@@ -187,9 +188,11 @@ export default {
         this.cards = res.data.projectInfo.filter(item => item)
       } else {
         this.cards = name
-        // console.log(name)
       }
     })
+    // home().then(res => {
+    //   console.log(res)
+    // })
   },
   methods: {
     close (value) {
