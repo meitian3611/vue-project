@@ -196,10 +196,8 @@ export default {
   },
   methods: {
     close (value) {
-      // console.log(value)
       this.$router.go(0)
       let name = this.option1.filter(item => item.value === value)
-      // console.log(name)
       let sh = name[0].text
       localStorage.setItem('mtList', JSON.stringify(sh))
     }
