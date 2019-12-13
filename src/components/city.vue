@@ -81,11 +81,7 @@ export default {
       let citys = res.data.data.areas
       // console.log(citys)
       this.cityList = citys[0].cities
-<<<<<<< HEAD
       // console.log(this.cityList)
-=======
-      console.log(this.cityList)
->>>>>>> 792a2a7e468fa66b707ab8c88c61f3b2089e24cb
       let delFirst = [...citys]
       delFirst.shift()
       // console.log(delFirst)
@@ -107,28 +103,18 @@ export default {
   },
   methods: {
     address (item) {
-<<<<<<< HEAD
       this.$emit('cityAddr', item)
       this.$router.replace('/')
     },
     address1 (item) {
       this.$emit('cityAddr', item)
       this.$router.replace('/')
-=======
       console.log(item)
       let clas = document.getElementsByTagName('body')[0].className
       if (clas) {
         document.getElementsByClassName('van-dropdown-item--down')[0].style.display = 'none'
       }
       this.$emit('cityAddr', item)
-    },
-    address1 (item) {
-      let clas = document.getElementsByTagName('body')[0].className
-      if (clas) {
-        document.getElementsByClassName('van-dropdown-item--down')[0].style.display = 'none'
-      }
-      this.$emit('cityAddr', item)
->>>>>>> 792a2a7e468fa66b707ab8c88c61f3b2089e24cb
     }
   }
 }

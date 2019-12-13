@@ -110,12 +110,31 @@
       <div class="container">
         <van-tabs
           v-model="active"
+          lazy-render
           sticky
           type="none"
           title-active-color="#000"
         >
           <van-tab title="详情">内容 1</van-tab>
-          <van-tab title="须知">内容 2</van-tab>
+          <van-tab title="须知">
+            <div class="section">
+              <div class="subtitle">
+                购票须知
+              </div>
+              <div class="content">
+                <div class="info-item">
+                  <div class="item-title">
+                    <div class="item-text">
+                      我最多可以购买几张？
+                    </div>
+                  </div>
+                  <div class="text">
+                    本项目每个场次每笔订单最多购买4张；如超出该数量，您可以分多单购买
+                  </div>
+                </div>
+              </div>
+            </div>
+          </van-tab>
           <van-tab title="推荐">内容 3</van-tab>
         </van-tabs>
       </div>
@@ -238,7 +257,7 @@ export default {
     return {
       buy: false,
       price: false,
-      active: 0,
+      active: 1,
       JinList: []
     }
   },
